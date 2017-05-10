@@ -1,0 +1,19 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      - if @bixi_stations.exists?
+        = navbar_link_to 'Refresh all stations', refresh_bixi_stations_path, method: :post
+      - else
+        = navbar_link_to 'Fetch stations', fetch_bixi_stations_path, method: :post
+
+      = navbar_link_to 'Closest stations to FX Innovation', '#'
+
+%table.table
+  %thead
+    - BixiStation.attribute_names.each do |attr|
+      %th= attr
+  %tbody
+    - @bixi_stations.each do |bixi_station|
+      %tr
+        - BixiStation.attribute_names.each do |attr|
+          %td= bixi_station.send(attr)

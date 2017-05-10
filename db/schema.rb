@@ -10,6 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170509222244) do
+
+  create_table "bixi_stations", force: :cascade do |t|
+    t.integer "official_identifier"
+    t.string "name"
+    t.string "terminal_identifier"
+    t.decimal "latitude", precision: 14, scale: 6
+    t.decimal "longitude", precision: 14, scale: 6
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
