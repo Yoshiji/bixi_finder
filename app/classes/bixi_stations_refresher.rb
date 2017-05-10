@@ -4,6 +4,9 @@ require 'json'
 class BixiStationsRefresher
 
   def execute
+    # removing existing BixiStation & reset primary key (id)
+    BixiStation.reset_table
+
     # get JSON
     uri = URI(BIXI_JSON_FEED_URL)
     response = Net::HTTP.get(uri)

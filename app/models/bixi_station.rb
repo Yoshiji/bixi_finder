@@ -14,8 +14,14 @@ class BixiStation < ApplicationRecord
 
 
   def self.refresh_stations
-    BixiStation.delete_all
     BixiStationsRefresher.new.execute
+  end
+
+  def self.reset_table
+    # remove all records
+    BixiStation.delete_all
+    # reset primary key to avoid busting the maximum id
+    ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name = '#{self.table_name}';")
   end
 
   protected
