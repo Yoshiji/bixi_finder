@@ -41,7 +41,7 @@ en:
     list_in_table:
       x_records_found_at: '%{x} record(s) found at %{datetime}'
     near_fx_innovation:
-      available_bikes: 'Must have available bikes'
+      auto_reload_page_every_x_seconds: 'Auto-reload the page every %{x} second(s)'
       distance_in_km: 'Maximum distance (km) from FX Innovation'
 
   layouts:

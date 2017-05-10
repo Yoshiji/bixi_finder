@@ -38,6 +38,6 @@ class BixiStationsController < ApplicationController
   end
 
   def filtered_bixi_stations_params
-    params.permit(:distance_in_km, :available_bikes)
+    params.permit(:distance_in_km, :auto_reload_page)
   end
 end

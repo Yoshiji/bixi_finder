@@ -8,7 +8,15 @@
       %p.form-control= label_tag :distance_in_km, t('.distance_in_km')
     %br
     .input-group.input-group
+      .input-group-addon= check_box_tag :auto_reload_page, true, params[:auto_reload_page]
+      %p.form-control= label_tag :auto_reload_page, t('.auto_reload_page_every_x_seconds', x: AUTO_RELOAD_BIXI_STATIONS_PAGE_DELAY_IN_MS/1000)
+    %br
+    .input-group.input-group
       = submit_tag t('common.filter'), class: 'btn btn-success'
     %br
 
 = render 'list_in_table'
+
+- if params[:auto_reload_page]
+  :javascript
+    setTimeout(window.location.reload.bind(window.location), #{AUTO_RELOAD_BIXI_STATIONS_PAGE_DELAY_IN_MS});
