@@ -4,6 +4,9 @@
       = navbar_link_to root_path do
         %span.glyphicon.glyphicon-home
         = t('layouts.menu_bar.all_stations')
+      = navbar_link_to refresh_bixi_stations_path, method: :post do
+        %span.glyphicon.glyphicon-refresh
+        = t('layouts.menu_bar.refresh')
       = navbar_link_to near_fx_innovation_bixi_stations_path do
         %span.glyphicon.glyphicon-record
         = t('layouts.menu_bar.closest_to_fx')

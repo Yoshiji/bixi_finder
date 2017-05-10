@@ -5,18 +5,18 @@
   %thead
     %th.text-centered= BixiStation.human_attribute_name(:name)
     %th.text-centered= BixiStation.human_attribute_name(:available_bikes)
-    %th.text-centered= BixiStation.human_attribute_name(:useable)
     %th.text-centered= BixiStation.human_attribute_name(:distance_to_fx_innovation)
     %th.text-centered{ colspan: 2 }= BixiStation.human_attribute_name(:bixi_checked_at)
 
   %tbody
     - @bixi_stations.each do |bixi_station|
+      - available_bikes = @current_state_by_official_identifier[bixi_station.official_identifier.to_s].first['ba']
+      - bixi_checked_at = Time.at(@current_state_by_official_identifier[bixi_station.official_identifier.to_s].first['lc']/1000)
       %tr
         %td= bixi_station.name
-        %td.text-righted{ class: bixi_station.available_bikes.zero? ? :danger : nil }= bixi_station.available_bikes
-        %td.text-righted{ class: bixi_station.useable? ? nil : :danger }= t("common.#{bixi_station.useable?.to_s}")
+        %td.text-righted{ class: available_bikes.zero? ? :danger : nil }= available_bikes
         %td.text-righted
           = bixi_station.distance_to_fx_innovation
           = t('units.kilometers_short')
-        %td.text-centered= l(bixi_station.bixi_checked_at, format: :short)
-        %td= time_ago_in_words(bixi_station.bixi_checked_at)
+        %td.text-centered= l(bixi_checked_at, format: :short)
+        %td= time_ago_in_words(bixi_checked_at)

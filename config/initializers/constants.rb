@@ -8,6 +8,6 @@ FAVORITE_LAT_LON = {
 BIXI_JSON_FEED_URL = 'https://secure.bixi.com/data/stations.json'.freeze
 
 BIXI_FILTER_DISTANCE_BOUNDARIES = {
-  range: 0.1..99,
+  range: 0.1..99.0,
   step: 0.1,
 }.freeze

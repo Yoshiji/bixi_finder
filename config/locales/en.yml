@@ -48,6 +48,7 @@ en:
     menu_bar:
       all_stations: 'All stations'
       closest_to_fx: 'Closest stations to FX Innovation'
+      refresh: 'Refresh'
 
   units:
     kilometers_short: 'km'

@@ -18,9 +18,6 @@ ActiveRecord::Schema.define(version: 20170509222244) do
     t.string "terminal_identifier"
     t.decimal "latitude", precision: 14, scale: 6
     t.decimal "longitude", precision: 14, scale: 6
-    t.boolean "useable"
-    t.integer "available_bikes"
-    t.datetime "bixi_checked_at"
     t.float "distance_to_fx_innovation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
