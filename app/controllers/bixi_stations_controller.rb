@@ -1,29 +1,27 @@
 class BixiStationsController < ApplicationController
+  before_action :refresh_bixi_stations
   before_action :set_bixi_stations
 
   def index
   end
 
-  def refresh
-    BixiStationsFetcher.new.execute
-    redirect_to bixi_stations_path
-  end
-
-  def near_fx_innovation # both GET
+  def near_fx_innovation
     @values_for_form = { distance_in_km: 1, available_bikes: true }
     @values_for_form.merge!(filter_bixi_stations_params.slice(:distance_in_km, :available_bikes).to_hash.symbolize_keys)
-    @values_for_form[:available_bikes] = @values_for_form[:available_bikes].to_s == 'true' # nil.to_s => ''
-    @values_for_form[:distance_in_km] = 1 unless (0.1..99).include?(@values_for_form[:distance_in_km].to_i)
+    @values_for_form[:available_bikes] = @values_for_form[:available_bikes].to_s == 'true'
+    @values_for_form[:distance_in_km] = 1 unless (BIXI_FILTER_DISTANCE_BOUNDARIES[:range]).include?(@values_for_form[:distance_in_km].to_f)
 
-    fx_innovation_coords = [45.506318, -73.569021] # provided by technical test description
-
-    @bixi_stations = @bixi_stations.near(fx_innovation_coords, @values_for_form[:distance_in_km])
+    @bixi_stations = @bixi_stations.max_distance_to_fx(@values_for_form[:distance_in_km])
     @bixi_stations = @bixi_stations.having_available_bikes if @values_for_form[:available_bikes]
   end
 
 
   protected
 
+
+  def refresh_bixi_stations
+    BixiStation.refresh_stations
+  end
 
   def set_bixi_stations
     @bixi_stations = BixiStation.ordered

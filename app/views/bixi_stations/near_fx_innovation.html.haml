@@ -2,20 +2,22 @@
 = form_tag near_fx_innovation_bixi_stations_path, method: :get do
   .form-wrapper
     .input-group.input-group
-      .input-group-addon= number_field_tag :distance_in_km, @values_for_form[:distance_in_km], min: 0.1, max: 99, step: :any
-      %p.form-control= label_tag :distance_in_km, 'KM distance (radius)'
+      .input-group-addon
+        - html_attrs = { min: BIXI_FILTER_DISTANCE_BOUNDARIES[:range].min, max: BIXI_FILTER_DISTANCE_BOUNDARIES[:range].max, step: BIXI_FILTER_DISTANCE_BOUNDARIES[:step] }
+        = number_field_tag :distance_in_km, @values_for_form[:distance_in_km], html_attrs
+      %p.form-control= label_tag :distance_in_km, t('.distance_in_km')
     %br
     .input-group.input-group
       .input-group-addon
         = radio_button_tag :available_bikes, true, @values_for_form[:available_bikes].present?
-        = label_tag :available_bikes_true, 'Yes'
+        = label_tag :available_bikes_true, t('common.yes')
         = radio_button_tag :available_bikes, false, @values_for_form[:available_bikes].blank?
-        = label_tag :available_bikes_false, 'No'
+        = label_tag :available_bikes_false, t('common.no')
       %p.form-control
-        = label_tag :available_bikes_true, "Must have available bikes"
+        = label_tag :available_bikes_true, t('.available_bikes')
     %br
     .input-group.input-group
-      = submit_tag 'Filter', class: 'btn btn-success'
+      = submit_tag t('common.filter'), class: 'btn btn-success'
     %br
 
 = render 'list_in_table'

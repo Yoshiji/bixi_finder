@@ -56,3 +56,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml'
 gem 'bootstrap-sass'
 gem 'geocoder'
+gem 'bulk_insert'

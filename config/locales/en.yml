@@ -30,4 +30,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  common:
+    'yes': 'Yes'
+    'true': 'Yes'
+    'no': 'No'
+    'false': 'No'
+    filter: 'Filter'
+
+  bixi_stations:
+    list_in_table:
+      x_records_found_at: '%{x} record(s) found at %{datetime}'
+    near_fx_innovation:
+      available_bikes: 'Must have available bikes'
+      distance_in_km: 'Maximum distance (km) from FX Innovation'
+
+  layouts:
+    menu_bar:
+      all_stations: 'All stations'
+      closest_to_fx: 'Closest stations to FX Innovation'
+
+  units:
+    kilometers_short: 'km'

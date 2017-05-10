@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      bixi_station: 'Bixi station'
+
+    attributes:
+      bixi_station:
+        available_bikes: 'Available bikes'
+        bixi_checked_at: 'Last check from Bixi to the station'
+        created_at: 'Last check from this app to Bixi'
+        distance_to_fx_innovation: 'Distance to FX Innovation (km)'
+        name: 'Name'
+        useable: 'Useable?'

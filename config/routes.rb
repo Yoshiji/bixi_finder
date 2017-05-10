@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   resources :bixi_stations, only: [:index] do
     collection do
-      post :refresh
       get :near_fx_innovation
     end
   end
