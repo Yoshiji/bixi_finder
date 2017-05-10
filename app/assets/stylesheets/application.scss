@@ -16,3 +16,17 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.body-wrapper {
+  width: 95%;
+  margin: auto;
+}
+
+.form-wrapper {
+  width: 500px;
+
+  input[type=number] {
+    width: 80px;
+    padding: 0;
+  }
+}

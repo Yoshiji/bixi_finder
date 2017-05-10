@@ -1,0 +1,12 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      = navbar_link_to root_path do
+        %span.glyphicon.glyphicon-home
+        = 'Home'
+      = navbar_link_to refresh_bixi_stations_path, method: :post do
+        %span.glyphicon.glyphicon-repeat
+        = 'Refresh all stations'
+      = navbar_link_to near_fx_innovation_bixi_stations_path do
+        %span.glyphicon.glyphicon-record
+        = 'Closest stations to FX Innovation'

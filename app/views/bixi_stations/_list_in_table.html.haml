@@ -1,0 +1,11 @@
+%h3= "#{@bixi_stations.size} station(s) found."
+
+%table.table
+  %thead
+    - BixiStation.attribute_names.each do |attr|
+      %th= attr
+  %tbody
+    - @bixi_stations.each do |bixi_station|
+      %tr
+        - BixiStation.attribute_names.each do |attr|
+          %td= bixi_station.send(attr)
