@@ -10,6 +10,15 @@
 - run `rake db:drop db:create db:migrate`
 - run `rails s -p 3000` (change port as you wish)
 
+# Technologies
+
+- Ruby 2.4.1p111
+- Rails 5.1.0
+- geocoder gem
+- bulk_insert gem (on master branch)
+- HAML gem
+- bootstrap gem
+
 # GIT Branches
 
 I created 3 branches:
